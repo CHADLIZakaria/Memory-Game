@@ -116,100 +116,112 @@
         }
         
     </style>
-    
+
 </head>
 <body>
-    <!--
-    <div class="overlay">
-        <form action=".">
-            <input type="text" placeholder="Enter your username" id="username"/>
-            <input type="submit" value="Start game"/>
-        </form>
+<!--
+<div class="overlay">
+    <form action=".">
+        <input type="text" placeholder="Enter your username" id="username"/>
+        <input type="submit" value="Start game"/>
+    </form>
+</div>
+-->
+<div class="memory-game">
+    <div class="user-info">
+        <span>Username: </span>
+        <span></span>
     </div>
-    -->
-    <div class="memory-game">
-        <div class="user-info">
-            <span>Username: </span>
-            <span></span>
-        </div>
-        <div class="container">
+    <div class="container">
 
-            <div class="game">
-                <div class="card" data-country="ma">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/900px-Flag_of_Morocco.svg.png">
-                    </div>
+        <div class="game">
+            <!-- <div class="card" data-country="ma">
+                <div class="card-face">
                 </div>
-                <div class="card" data-country="ma">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/900px-Flag_of_Morocco.svg.png">
-                    </div>
+                <div class="card-backface">
+                    <img src="img/900px-Flag_of_Morocco.svg.png">
                 </div>
-                
-                <div class="card" data-country="eg">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/2560px-Flag_of_Egypt.svg.png">
-                    </div>
-                </div>
-                <div class="card" data-country="eg">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/2560px-Flag_of_Egypt.svg.png">
-                    </div>
-                </div>
-                
-                <div class="card" data-country="alg">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/2560px-Flag_of_Algeria.svg.png">
-                        
-                    </div>
-                </div>
-                
-                <div class="card" data-country="alg">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/2560px-Flag_of_Algeria.svg.png">
-                        
-                    </div>
-                </div>
-                
-                <div class="card" data-country="mau">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/Flag_of_Mauritania.svg.png">
-                        
-                    </div>
-                </div>
-                <div class="card" data-country="mau">
-                    <div class="card-face">
-                    </div>
-                    <div class="card-backface">
-                        <img src="img/Flag_of_Mauritania.svg.png">
-                        
-                    </div>
-                </div>  
             </div>
-        </div>
+            <div class="card" data-country="ma">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/900px-Flag_of_Morocco.svg.png">
+                </div>
+            </div>
+            
+            <div class="card" data-country="eg">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/2560px-Flag_of_Egypt.svg.png">
+                </div>
+            </div>
+            <div class="card" data-country="eg">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/2560px-Flag_of_Egypt.svg.png">
+                </div>
+            </div>
+            
+            <div class="card" data-country="alg">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/2560px-Flag_of_Algeria.svg.png">
+                    
+                </div>
+            </div>
+            
+            <div class="card" data-country="alg">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/2560px-Flag_of_Algeria.svg.png">
+                    
+                </div>
+            </div>
+            
+            <div class="card" data-country="mau">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/Flag_of_Mauritania.svg.png">
+                    
+                </div>
+            </div>
+            <div class="card" data-country="mau">
+                <div class="card-face">
+                </div>
+                <div class="card-backface">
+                    <img src="img/Flag_of_Mauritania.svg.png">
+                    
+                </div>
+            </div>  
+        </div> -->
     </div>
-    <script>
-        //document.body.appendChild(form[0])
-        // document.querySelector("input[type='submit']").addEventListener("click", function() {
-        //     document.querySelector(".overlay").remove()
-        //     console.log(document.querySelector("#username").value)
-        //     document.querySelector(".memory-game .user-info").lastElementChild.innerHTML=document.querySelector("#username").value;
-        // })
+</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    let myCountry=new Array();
+    var url_string = window.location.href; // www.test.com?filename=test
+    var url = new URL(url_string);
+    var continent = url.searchParams.get("continent");
+    let myLink = "https://restcountries.eu/rest/v2/region/"+continent
+    
+    $.getJSON(myLink, function(data) {
+        for(let i=0; i<data.length; i++) {
+            myCountry[i]=data[i].alpha2Code
+        }
+        
+        myCountry  = shuffleArray(myCountry)
+
+        console.log(myCountry)
+        for(let i =0; i<8; i++) {
+            createBlockImage("https://flagcdn.com/w160/"+myCountry[i].toLowerCase()+".png", myCountry[i])
+        }
 
         let oldArray = [...Array(document.querySelectorAll(".game .card").length).keys()]
         let i=0, tmp;
@@ -220,7 +232,7 @@
             oldArray[randomIndex] = tmp
             i++;
         }
-
+    
         document.querySelectorAll(".game .card").forEach((element, index) => {
             element.style.order=oldArray[index]
             
@@ -228,7 +240,6 @@
                 element.classList.add("is-flipped")
                 let blockFlipped = [...document.querySelectorAll(".game .card")].filter(x => x.classList.contains("is-flipped"))
                 if(blockFlipped.length==2) {
-                    
                     document.querySelector(".game").classList.add('block')
                     setTimeout(()=>{
                         document.querySelector(".game").classList.remove('block')
@@ -254,7 +265,38 @@
             })
         })
 
-    </script>
-</body>
+        
+    })
 
+
+    function createBlockImage(imgSrc,country) {
+        for(let i=0; i<2; i++) {
+            let blockImage=document.createElement("div")
+            blockImage.dataset.country=country
+            blockImage.classList.add("card")
+            blockImage.innerHTML = 
+            `<div class="card-face">
+            </div>
+            <div class="card-backface">
+                <img src="${imgSrc}">            
+            </div>`;
+            document.querySelector(".game").appendChild(blockImage)
+        }
+    }
+
+    function shuffleArray(myArray) {
+        let j=0, tmp
+        while(myArray.length>j) {
+            let randomIndex = Math.floor(myArray.length*Math.random())
+            tmp = myArray[j]
+            myArray[j] = myArray[randomIndex]
+            myArray[randomIndex] = tmp
+            j++;
+        }
+        return myArray
+    }
+
+    
+</script>
+</body>
 </html>

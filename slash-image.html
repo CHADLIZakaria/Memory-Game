@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 1080px;
+            margin: 20px auto 0;
+        }
+
+        .image {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            /* border: 1px solid #efefef; */
+        }
+        .image img{
+            width: 100%;
+            height: 90%;
+        }
+
+        .image div {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #000;
+            background-color: #efefef;
+            width: 100%;
+            height: 10%;
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .popup {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0,.7);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .popup img {
+            width: 50%;
+            height: 50%;
+            opacity: 1;
+        }
+
+        .popup .backg {
+            width: 50%;
+            height: 50%;
+            background-color: #fff;
+            text-align: center;
+            /* left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); */
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="image">
+            <img src="nature.jpeg"/>
+            <div>
+                Memory Game
+            </div>    
+        </div>
+    </div>
+    <div class="popup">
+        <div class="backg">
+            <img src="nature.jpeg"/>
+            <p>text</p>
+
+        </div>
+    </div>
+<script>
+
+</script>
+</body>
+</html>
